@@ -1,4 +1,5 @@
 import type { DirectionContent } from './types';
+import { steps, proof } from './process';
 
 export const dsk: DirectionContent = {
   slug: 'dsk',
@@ -59,4 +60,6 @@ export const dsk: DirectionContent = {
       text: 'Шеф-монтаж и пуско-наладка входят в перечень услуг. Состав работ согласуется под конкретный проект.',
     },
   ],
+  steps,
+  proof,
 };

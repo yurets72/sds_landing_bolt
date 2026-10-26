@@ -1,4 +1,6 @@
 import type { DirectionContent } from './types';
+import { steps, proof } from './process';
+import { steps, proof } from './process';
 
 export const service: DirectionContent = {
   slug: 'service',
@@ -58,4 +60,6 @@ export const service: DirectionContent = {
       text: 'Иркутск, Владивосток и Москва — три точки поддержки для оперативного реагирования.',
     },
   ],
+  steps,
+  proof,
 };

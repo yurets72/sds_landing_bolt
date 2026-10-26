@@ -1,4 +1,5 @@
 import type { HeroContent, HomeContent } from './types';
+import { steps, proof } from './process';
 
 export const home: HomeContent = {
   meta: {
@@ -46,6 +47,8 @@ export const home: HomeContent = {
       href: '/service',
     },
   ],
+  steps,
+  proof,
 };
 
 export type { HeroContent };

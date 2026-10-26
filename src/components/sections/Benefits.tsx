@@ -24,7 +24,7 @@ export function Benefits({ benefits }: BenefitsProps) {
             <li
               key={b.number}
               className="reveal bg-panel border border-line rounded-2xl p-8 flex flex-col gap-4 hover:border-accent"
-              style={{ ['--reveal-delay' as string]: REVEAL_DELAYS[i] ?? '0ms' }}
+              style={{ ['--reveal-delay']: REVEAL_DELAYS[i] ?? '0ms' } as React.CSSProperties}
             >
               <div className="flex items-baseline justify-between">
                 <span className="text-accent-soft text-sm font-bold tracking-[0.08em]">

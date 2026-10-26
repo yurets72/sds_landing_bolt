@@ -19,6 +19,17 @@ export interface BenefitCard {
   text: string;
 }
 
+export interface StepItem {
+  number: string;
+  title: string;
+  text: string;
+}
+
+export interface ProofItem {
+  year: string;
+  text: string;
+}
+
 export interface HomeDirectionCard {
   number: string;
   short: string;
@@ -38,8 +49,10 @@ export interface DirectionContent {
   hero: HeroContent;
   tagline: string;
   benefits: BenefitCard[];
-  // Этапы 4–5:
-  // steps, projects, faq, finalCta
+  steps: StepItem[];
+  proof: ProofItem[];
+  // Этап 5:
+  // faq, finalCta
 }
 
 export interface HomeContent {
@@ -49,4 +62,6 @@ export interface HomeContent {
   hero: HeroContent;
   tagline: string;
   directions: HomeDirectionCard[];
+  steps: StepItem[];
+  proof: ProofItem[];
 }

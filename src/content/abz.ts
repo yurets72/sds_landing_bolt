@@ -1,4 +1,5 @@
 import type { DirectionContent } from './types';
+import { steps, proof } from './process';
 
 export const abz: DirectionContent = {
   slug: 'abz',
@@ -58,4 +59,6 @@ export const abz: DirectionContent = {
       text: 'Системы АСУ SMARTABZ и SMARTMIX. Состав системы уточняется при подборе под ваш завод.',
     },
   ],
+  steps,
+  proof,
 };
