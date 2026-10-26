@@ -1,9 +1,10 @@
 import type { BenefitCard } from '@/content/types';
-import { ArrowUpRight } from '@/components/ui/ArrowUpRight';
 
 interface BenefitsProps {
   benefits: BenefitCard[];
 }
+
+const REVEAL_DELAYS = ['0ms', '100ms', '150ms', '200ms', '300ms', '500ms'];
 
 export function Benefits({ benefits }: BenefitsProps) {
   return (
@@ -22,8 +23,8 @@ export function Benefits({ benefits }: BenefitsProps) {
           {benefits.map((b, i) => (
             <li
               key={b.number}
-              className="reveal bg-panel border border-line rounded-2xl p-6 flex flex-col gap-4 transition-colors duration-500 hover:border-accent"
-              style={{ transitionDelay: `${i * 60}ms` }}
+              className="reveal bg-panel border border-line rounded-2xl p-8 flex flex-col gap-4 hover:border-accent"
+              style={{ ['--reveal-delay' as string]: REVEAL_DELAYS[i] ?? '0ms' }}
             >
               <div className="flex items-baseline justify-between">
                 <span className="text-accent-soft text-sm font-bold tracking-[0.08em]">
