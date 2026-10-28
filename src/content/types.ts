@@ -11,6 +11,7 @@ export interface HeroContent {
   ctaHref: string;
   proof: string;
   image?: HeroImage;
+  video?: string;
 }
 
 export interface BenefitCard {
