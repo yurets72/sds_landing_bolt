@@ -9,6 +9,7 @@ interface ButtonProps {
   onClick?: () => void;
   type?: 'button' | 'submit';
   disabled?: boolean;
+  icon?: boolean;
 }
 
 export function Button({
@@ -19,9 +20,10 @@ export function Button({
   onClick,
   type = 'button',
   disabled = false,
+  icon = true,
 }: ButtonProps) {
   const base =
-    'btn inline-flex items-center justify-center gap-3 rounded-lg px-3 py-2 text-base font-semibold transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]';
+    'btn inline-flex items-center justify-center gap-3 rounded-xl px-3 py-2 text-base font-semibold transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]';
   const styles =
     variant === 'primary'
       ? 'bg-accent text-bg hover:bg-accent-soft hover:-translate-y-0.5 active:translate-y-px active:scale-[0.98] disabled:opacity-60 disabled:pointer-events-none'
@@ -32,7 +34,7 @@ export function Button({
     return (
       <a href={href} className={`${base} ${styles} ${className}`} onClick={onClick}>
         {children}
-        <ArrowUpRight className="w-4 h-4" />
+        {icon && <ArrowUpRight className="w-4 h-4" />}
       </a>
     );
   }
@@ -44,7 +46,7 @@ export function Button({
       onClick={onClick}
     >
       {children}
-      <ArrowUpRight className="w-4 h-4" />
+      {icon && <ArrowUpRight className="w-4 h-4" />}
     </button>
   );
 }
