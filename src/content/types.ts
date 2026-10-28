@@ -61,7 +61,20 @@ export interface HomeContent {
   accentSoft: string;
   hero: HeroContent;
   tagline: string;
+  stats: StatItem[];
+  whyUs: WhyUsItem[];
   directions: HomeDirectionCard[];
   steps: StepItem[];
   proof: ProofItem[];
+}
+
+export interface StatItem {
+  value: string;
+  label: string;
+}
+
+export interface WhyUsItem {
+  number: string;
+  title: string;
+  text: string;
 }
