@@ -17,37 +17,32 @@ export function Proof({ proof }: ProofProps) {
           </h2>
         </div>
 
-        <ol className="relative list-none p-0 m-0">
+        <ol className="relative list-none p-0 m-0 ml-2 md:ml-4">
+          {/* Вертикальная линия */}
           <span
-            className="absolute left-[7px] top-2 bottom-2 w-px bg-line md:left-[calc(100%/2-0.5px)]"
+            className="absolute left-[5px] top-2 bottom-2 w-px bg-line"
             aria-hidden="true"
           />
 
-          {proof.map((p, i) => {
-            const isLeft = i % 2 === 0;
-            return (
-              <li
-                key={p.year}
-                className={`reveal relative pb-10 pl-8 md:w-1/2 md:pl-0 ${
-                  isLeft ? 'md:pr-12 md:text-right md:ml-0' : 'md:pl-12 md:ml-auto'
-                }`}
-                style={{ '--reveal-delay': `${Math.min(i * 80, 400)}ms` } as React.CSSProperties}
-              >
-                <span
-                  className={`absolute top-1.5 left-0 h-3 w-3 rounded-full bg-accent md:left-auto ${
-                    isLeft ? 'md:right-[-6px]' : 'md:left-[-6px]'
-                  }`}
-                  aria-hidden="true"
-                />
-                <div className="text-sm font-bold text-accent-soft tracking-[0.08em] mb-1">
-                  {p.year}
-                </div>
-                <div className="text-base text-text leading-[1.6] [text-wrap:pretty]">
-                  {p.text}
-                </div>
-              </li>
-            );
-          })}
+          {proof.map((p, i) => (
+            <li
+              key={p.year}
+              className="reveal relative pl-8 pb-10 last:pb-0"
+              style={{ '--reveal-delay': `${Math.min(i * 80, 400)}ms` } as React.CSSProperties}
+            >
+              {/* Точка */}
+              <span
+                className="absolute top-1.5 left-0 h-3 w-3 rounded-full bg-accent"
+                aria-hidden="true"
+              />
+              <div className="text-sm font-bold text-accent-soft tracking-[0.08em] mb-1">
+                {p.year}
+              </div>
+              <div className="text-base text-text leading-[1.6] [text-wrap:pretty]">
+                {p.text}
+              </div>
+            </li>
+          ))}
         </ol>
       </div>
     </section>
