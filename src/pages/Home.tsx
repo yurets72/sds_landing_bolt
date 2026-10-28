@@ -1,32 +1,48 @@
-import { home } from '@/content/home';
-import { useMeta } from '@/lib/useMeta';
-import { buildHref } from '@/lib/router';
-import { PageShell } from '@/components/layout/PageShell';
-import { Hero } from '@/components/sections/Hero';
-import { Stats } from '@/components/sections/Stats';
-import { Tagline } from '@/components/sections/Tagline';
-import { WhyUs } from '@/components/sections/WhyUs';
-import { DirectionCards } from '@/components/sections/DirectionCards';
-import { HowItWorks } from '@/components/sections/HowItWorks';
-import { Proof } from '@/components/sections/Proof';
-import { FAQ } from '@/components/sections/FAQ';
-import { FinalCTA } from '@/components/sections/FinalCTA';
-import { faqCommon } from '@/content/faq';
+import type { ProofItem } from '@/content/types';
 
-export function Home() {
-  useMeta({ title: home.meta.title, description: home.meta.description });
-  const ctaHref = buildHref('/', 'contacts');
+interface ProofProps {
+  proof: ProofItem[];
+}
+
+export function Proof({ proof }: ProofProps) {
   return (
-    <PageShell accent={home.accent} accentSoft={home.accentSoft}>
-      <Hero hero={home.hero} ctaHref={ctaHref} />
-      <Stats items={home.stats} />
-      <Tagline text={home.tagline} />
-      <WhyUs items={home.whyUs} />
-      <DirectionCards cards={home.directions} />
-      <HowItWorks steps={home.steps} />
-      <Proof proof={home.proof} />
-      <FAQ items={faqCommon} />
-      <FinalCTA />
-    </PageShell>
+    <section className="py-20 lg:py-24 border-t border-line">
+      <div className="mx-auto w-full max-w-wrap px-5">
+        <div className="reveal mb-12 lg:mb-16">
+          <p className="eyebrow-rule text-accent-soft text-xs font-bold uppercase tracking-[0.12em] mb-5">
+            История проектов
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold leading-[1.15] tracking-[-0.035em] max-w-hero [text-wrap:balance]">
+            Более 10 лет реальных запусков
+          </h2>
+        </div>
+
+        <ol className="relative list-none p-0 m-0 ml-2 md:ml-4">
+          <span
+            className="absolute left-[5px] top-2 bottom-2 w-px bg-line"
+            aria-hidden="true"
+          />
+
+          {proof.map((p, i) => (
+            <li
+              key={p.year}
+              className="reveal relative pl-8 pb-10 last:pb-0"
+              style={{ '--reveal-delay': `${Math.min(i * 80, 400)}ms` } as React.CSSProperties}
+            >
+              <span
+                className="absolute top-1.5 left-0 h-3 w-3 rounded-full bg-accent"
+                aria-hidden="true"
+              />
+              <div className="text-sm font-bold text-accent-soft tracking-[0.08em] mb-1">
+                {p.year}
+              </div>
+              <div className="text-base text-text leading-[1.6] [text-wrap:pretty]">
+                {p.text}
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
   );
 }
