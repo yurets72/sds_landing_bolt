@@ -1,6 +1,5 @@
 import type { DirectionContent } from './types';
 import { steps, proof } from './process';
-import { steps, proof } from './process';
 
 export const service: DirectionContent = {
   slug: 'service',
