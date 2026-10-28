@@ -22,7 +22,7 @@ export const dsk: DirectionContent = {
     proof:
       'С 2011 года · Комплексы 100–450 т/ч · Сервисные центры в Иркутске, Владивостоке и Москве',
     image: {
-      src: 'https://images.pexels.com/photos/17320062/pexels-photo-17320062.jpeg?auto=compress&cs=tinysrgb&h=900&w=1100',
+      src: '/images/dsk.png',
       alt: 'Дробильно-сортировочное оборудование и конвейеры в карьере',
     },
   },
