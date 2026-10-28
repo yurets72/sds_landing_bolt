@@ -7,6 +7,9 @@ import { Tagline } from '@/components/sections/Tagline';
 import { Benefits } from '@/components/sections/Benefits';
 import { HowItWorks } from '@/components/sections/HowItWorks';
 import { Proof } from '@/components/sections/Proof';
+import { FAQ } from '@/components/sections/FAQ';
+import { FinalCTA } from '@/components/sections/FinalCTA';
+import { faqCommon } from '@/content/faq';
 
 interface DirectionProps {
   content: DirectionContent;
@@ -23,6 +26,8 @@ export function Direction({ content }: DirectionProps) {
       <Benefits benefits={content.benefits} />
       <HowItWorks steps={content.steps} />
       <Proof proof={content.proof} />
+      <FAQ items={faqCommon} />
+<FinalCTA />
     </PageShell>
   );
 }
