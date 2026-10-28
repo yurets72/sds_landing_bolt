@@ -21,7 +21,7 @@ export const abz: DirectionContent = {
     ctaHref: '#contacts',
     proof: 'С 2011 года · Поставка и запуск · Сервис и комплектующие',
     image: {
-      src: 'https://images.pexels.com/photos/19351240/pexels-photo-19351240.jpeg?auto=compress&cs=tinysrgb&h=900&w=1100',
+      src: '/images/abz.png',
       alt: 'Асфальтобетонный завод с производственными башнями и оборудованием',
     },
   },
