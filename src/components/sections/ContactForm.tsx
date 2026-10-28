@@ -5,6 +5,7 @@ type FormState = 'idle' | 'loading' | 'success' | 'error';
 
 export function ContactForm() {
   const [form, setForm] = useState({ name: '', phone: '', company: '', message: '' });
+  const [consent, setConsent] = useState(false);
   const [state, setState] = useState<FormState>('idle');
   const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -13,6 +14,7 @@ export function ContactForm() {
     if (!form.name.trim()) next.name = 'Укажите имя';
     if (!form.phone.trim()) next.phone = 'Укажите телефон';
     if (form.phone && !/^[\d\s+\-()]{7,20}$/.test(form.phone)) next.phone = 'Проверьте формат телефона';
+    if (!consent) next.consent = 'Необходимо согласие на обработку данных';
     setErrors(next);
     return Object.keys(next).length === 0;
   };
@@ -106,8 +108,29 @@ export function ContactForm() {
         />
       </div>
 
+      <div className="flex items-start gap-2">
+        <input
+          type="checkbox"
+          id="consent"
+          checked={consent}
+          onChange={(e) => setConsent(e.target.checked)}
+          disabled={state === 'loading'}
+          className="mt-1 accent-[var(--accent)]"
+          aria-invalid={!!errors.consent}
+        />
+        <label htmlFor="consent" className="text-sm text-muted">
+          Я согласен на обработку персональных данных в соответствии с{' '}
+          <a href="#/privacy" className="text-accent underline">
+            политикой конфиденциальности
+          </a>
+        </label>
+      </div>
+      {errors.consent && <p className="text-sm text-red-400">{errors.consent}</p>}
+
       {state === 'error' && (
-        <p className="text-sm text-red-400">Отправка временно недоступна. Позвоните по телефону +7 (3952) 43-67-23.</p>
+        <p className="text-sm text-red-400">
+          Отправка временно недоступна. Позвоните по телефону +7 (3952) 43-67-23.
+        </p>
       )}
 
       <Button href="" type="submit" disabled={state === 'loading'} icon={false} className="w-full">
@@ -115,11 +138,4 @@ export function ContactForm() {
       </Button>
     </form>
   );
-  <div className="flex items-start gap-2">
-  <input type="checkbox" id="consent" required className="mt-1" />
-  <label htmlFor="consent" className="text-sm text-muted">
-    Я согласен на обработку персональных данных в соответствии с{' '}
-    <a href="#/privacy" className="text-accent underline">политикой конфиденциальности</a>
-  </label>
-</div>
 }
