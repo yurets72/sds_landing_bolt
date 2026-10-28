@@ -7,6 +7,9 @@ import { Tagline } from '@/components/sections/Tagline';
 import { DirectionCards } from '@/components/sections/DirectionCards';
 import { HowItWorks } from '@/components/sections/HowItWorks';
 import { Proof } from '@/components/sections/Proof';
+import { FAQ } from '@/components/sections/FAQ';
+import { FinalCTA } from '@/components/sections/FinalCTA';
+import { faqCommon } from '@/content/faq';
 
 export function Home() {
   useMeta({ title: home.meta.title, description: home.meta.description });
@@ -18,6 +21,8 @@ export function Home() {
       <DirectionCards cards={home.directions} />
       <HowItWorks steps={home.steps} />
       <Proof proof={home.proof} />
+      <FAQ items={faqCommon} />
+<FinalCTA />
     </PageShell>
   );
 }
