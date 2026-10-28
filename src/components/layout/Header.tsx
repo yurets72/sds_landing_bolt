@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { navItems } from '@/content/nav';
+import { Logo } from '@/components/ui/Logo';
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -29,7 +30,7 @@ export function Header() {
             className="brand flex items-center gap-3 font-bold tracking-[0.02em]"
             aria-label="СпецДорСервис, все направления"
           >
-            <img src="/logo.png" alt="СДС" className="h-9 w-auto" />
+            <Logo className="h-9 w-9 text-accent" />
             <span className="hidden sm:block leading-tight">
               СПЕЦДОРСЕРВИС
               <small className="block text-muted text-xs font-medium tracking-[0.08em]">
@@ -92,7 +93,7 @@ export function Header() {
                 href={`#${item.to}`}
                 className="text-2xl font-semibold text-text hover:text-accent-soft"
                 style={{
-                  animation: `reveal-fade-up 600ms cubic-bezier(0.32,0.72,0,1) ${100 + i * 80}ms forwards`,
+                  animation: `reveal-fade-up 600ms cubic-bezier(0.32,0.72,0.1) ${100 + i * 80}ms forwards`,
                 }}
               >
                 {item.label}
