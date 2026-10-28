@@ -5,6 +5,8 @@ import { PageShell } from '@/components/layout/PageShell';
 import { Hero } from '@/components/sections/Hero';
 import { Tagline } from '@/components/sections/Tagline';
 import { Benefits } from '@/components/sections/Benefits';
+import { HowItWorks } from '@/components/sections/HowItWorks';
+import { Proof } from '@/components/sections/Proof';
 
 interface DirectionProps {
   content: DirectionContent;
@@ -19,6 +21,8 @@ export function Direction({ content }: DirectionProps) {
       <Hero hero={content.hero} ctaHref={ctaHref} />
       <Tagline text={content.tagline} />
       <Benefits benefits={content.benefits} />
+      <HowItWorks steps={content.steps} />
+      <Proof proof={content.proof} />
     </PageShell>
   );
 }
