@@ -18,7 +18,6 @@ export function Proof({ proof }: ProofProps) {
         </div>
 
         <ol className="relative list-none p-0 m-0">
-          {/* Вертикальная линия таймлайна */}
           <span
             className="absolute left-[7px] top-2 bottom-2 w-px bg-line md:left-[calc(100%/2-0.5px)]"
             aria-hidden="true"
@@ -30,11 +29,10 @@ export function Proof({ proof }: ProofProps) {
               <li
                 key={p.year}
                 className={`reveal relative pb-10 pl-8 md:w-1/2 md:pl-0 ${
-                  isLeft ? 'md:pr-10 md:text-right md:ml-0' : 'md:pl-10 md:ml-auto'
+                  isLeft ? 'md:pr-12 md:text-right md:ml-0' : 'md:pl-12 md:ml-auto'
                 }`}
                 style={{ '--reveal-delay': `${Math.min(i * 80, 400)}ms` } as React.CSSProperties}
               >
-                {/* Точка на линии */}
                 <span
                   className={`absolute top-1.5 left-0 h-3 w-3 rounded-full bg-accent md:left-auto ${
                     isLeft ? 'md:right-[-6px]' : 'md:left-[-6px]'
