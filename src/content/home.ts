@@ -54,7 +54,7 @@ export const home: HomeContent = {
       title: 'Дробильно-сортировочные комплексы',
       text: 'Подбор и поставка стационарных и мобильных ДСК. Комплексы 100–450 т/ч, монтаж, запуск и сервис.',
       href: '/dsk',
-      image: '/images/hero-dsk.png',
+      image: '/images/dsk.png',
     },
     {
       number: '02',
@@ -62,7 +62,7 @@ export const home: HomeContent = {
       title: 'Асфальтобетонные заводы',
       text: 'Стационарные и мобильные АБЗ, рециклинг, горелки, битумное хозяйство и автоматика.',
       href: '/abz',
-      image: '/images/hero-abz.png',
+      image: '/images/abz.png',
     },
     {
       number: '03',
@@ -70,7 +70,7 @@ export const home: HomeContent = {
       title: 'Сервис и комплектующие',
       text: 'Запчасти к российскому и импортному оборудованию, изготовление по чертежам, ремонт.',
       href: '/service',
-      image: '/images/hero-service.png',
+      image: '/images/service.png',
     },
   ],
   steps,
