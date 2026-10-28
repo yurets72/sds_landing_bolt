@@ -115,4 +115,11 @@ export function ContactForm() {
       </Button>
     </form>
   );
+  <div className="flex items-start gap-2">
+  <input type="checkbox" id="consent" required className="mt-1" />
+  <label htmlFor="consent" className="text-sm text-muted">
+    Я согласен на обработку персональных данных в соответствии с{' '}
+    <a href="#/privacy" className="text-accent underline">политикой конфиденциальности</a>
+  </label>
+</div>
 }
