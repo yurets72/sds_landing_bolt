@@ -17,33 +17,56 @@ export function Proof({ proof }: ProofProps) {
           </h2>
         </div>
 
-        <ol className="relative list-none p-0 m-0 ml-2 md:ml-4">
-          {/* Вертикальная линия */}
+        {/* Мобилка: простая линия слева. Десктоп: зигзаг */}
+        <div className="relative">
+          {/* Линия: на мобилке слева, на десктопе по центру */}
           <span
-            className="absolute left-[5px] top-2 bottom-2 w-px bg-line"
+            className="absolute top-2 bottom-2 w-px bg-line left-[7px] md:left-1/2 md:-translate-x-1/2"
             aria-hidden="true"
           />
 
-          {proof.map((p, i) => (
-            <li
-              key={p.year}
-              className="reveal relative pl-8 pb-10 last:pb-0"
-              style={{ '--reveal-delay': `${Math.min(i * 80, 400)}ms` } as React.CSSProperties}
-            >
-              {/* Точка */}
-              <span
-                className="absolute top-1.5 left-0 h-3 w-3 rounded-full bg-accent"
-                aria-hidden="true"
-              />
-              <div className="text-sm font-bold text-accent-soft tracking-[0.08em] mb-1">
-                {p.year}
-              </div>
-              <div className="text-base text-text leading-[1.6] [text-wrap:pretty]">
-                {p.text}
-              </div>
-            </li>
-          ))}
-        </ol>
+          <ol className="list-none p-0 m-0">
+            {proof.map((p, i) => {
+              const isLeft = i % 2 === 0;
+              return (
+                <li
+                  key={p.year}
+                  className="reveal relative pb-10 last:pb-0 pl-8 md:pl-0 md:grid md:grid-cols-[1fr_auto_1fr] md:gap-8 md:items-start"
+                  style={{ '--reveal-delay': `${Math.min(i * 80, 400)}ms` } as React.CSSProperties}
+                >
+                  {/* Точка: на мобилке слева, на десктопе в центре */}
+                  <span
+                    className="absolute top-1.5 left-0 h-3 w-3 rounded-full bg-accent md:left-1/2 md:-translate-x-1/2"
+                    aria-hidden="true"
+                  />
+
+                  {/* Левая часть (на десктопе — для чётных) */}
+                  <div className={isLeft ? 'md:text-right' : 'md:invisible'}>
+                    <div className="text-sm font-bold text-accent-soft tracking-[0.08em] mb-1">
+                      {p.year}
+                    </div>
+                    <div className="text-base text-text leading-[1.6] [text-wrap:pretty]">
+                      {p.text}
+                    </div>
+                  </div>
+
+                  {/* Центральная колонка (пустая, держит точку на линии) */}
+                  <div className="hidden md:block" aria-hidden="true" />
+
+                  {/* Правая часть (на десктопе — для нечётных) */}
+                  <div className={!isLeft ? 'md:text-left' : 'md:invisible'}>
+                    <div className="text-sm font-bold text-accent-soft tracking-[0.08em] mb-1">
+                      {p.year}
+                    </div>
+                    <div className="text-base text-text leading-[1.6] [text-wrap:pretty]">
+                      {p.text}
+                    </div>
+                  </div>
+                </li>
+              );
+            })}
+          </ol>
+        </div>
       </div>
     </section>
   );
