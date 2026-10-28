@@ -29,14 +29,10 @@ export function Header() {
             className="brand flex items-center gap-3 font-bold tracking-[0.02em]"
             aria-label="СпецДорСервис, все направления"
           >
-            <img
-  src="/logo.jpeg"
-  alt="СДС"
-  className="h-10 w-auto object-contain"
-  style={{
-    filter: 'invert(1) sepia(1) saturate(6) hue-rotate(350deg) brightness(1.2)',
-  }}
-/>
+            {/* Текстовая плашка вместо логотипа */}
+            <span className="grid h-9 w-9 place-items-center rounded-lg bg-accent text-bg text-xs font-bold">
+              СДС
+            </span>
             <span className="hidden sm:block leading-tight">
               СПЕЦДОРСЕРВИС
               <small className="block text-muted text-xs font-medium tracking-[0.08em]">
