@@ -6,8 +6,6 @@ interface HeroProps {
   ctaHref?: string;
 }
 
-const stages = ['Подбор', 'Поставка', 'Монтаж', 'Запуск', 'Сервис'];
-
 export function Hero({ hero, ctaHref }: HeroProps) {
   return (
     <section className="py-20 lg:py-24">
@@ -37,59 +35,38 @@ export function Hero({ hero, ctaHref }: HeroProps) {
           </p>
         </div>
 
-        {/* Правая колонка — видео или картинка */}
-        <div className="relative reveal">
-          <div className="relative overflow-hidden rounded-2xl aspect-[1.06/1] bg-panel border border-line">
-            {hero.video ? (
-              <video
-                className="absolute inset-0 w-full h-full object-cover"
-                src={hero.video}
-                poster={hero.image?.src}
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                aria-label={hero.image?.alt ?? 'Промышленное оборудование'}
-              />
-            ) : hero.image ? (
-              <img
-                src={hero.image.src}
-                alt={hero.image.alt}
-                fetchPriority="high"
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-            ) : null}
-
-            {/* Тёплый оверлей, чтобы видео вписалось в палитру */}
-            <div
-              className="absolute inset-0 bg-gradient-to-t from-bg/90 via-bg/30 to-transparent pointer-events-none"
-              aria-hidden="true"
+        {/* Правая колонка — видео фоном */}
+        <div className="relative reveal rounded-2xl overflow-hidden aspect-[1.06/1] bg-panel border border-line">
+          {hero.video ? (
+            <video
+              className="absolute inset-0 w-full h-full object-cover"
+              src={hero.video}
+              poster={hero.image?.src}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
             />
+          ) : hero.image ? (
+            <img
+              src={hero.image.src}
+              alt={hero.image.alt}
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          ) : null}
 
-            {/* Полоса этапов поверх видео */}
-            <div className="absolute inset-x-4 bottom-4 z-10">
-              <div className="bg-bg/80 backdrop-blur-md rounded-xl p-4">
-                <p className="text-xs font-bold uppercase tracking-[0.12em] text-accent-soft mb-3">
-                  Один подрядчик на весь цикл
-                </p>
-                <ol className="flex items-center justify-between gap-1 list-none p-0 m-0">
-                  {stages.map((stage, i) => (
-                    <li key={stage} className="flex items-center gap-1 flex-1 min-w-0">
-                      <span className="text-xs font-semibold text-text whitespace-nowrap truncate">
-                        {stage}
-                      </span>
-                      {i < stages.length - 1 && (
-                        <span
-                          className="h-px flex-1 bg-line min-w-[8px]"
-                          aria-hidden="true"
-                        />
-                      )}
-                    </li>
-                  ))}
-                </ol>
-              </div>
-            </div>
+          {/* Затемнение снизу, чтобы видео вписалось в тёмную тему */}
+          <div className="absolute inset-0 bg-gradient-to-t from-bg/80 via-transparent to-transparent pointer-events-none" aria-hidden="true" />
+
+          {/* Подпись поверх видео */}
+          <div className="absolute inset-x-4 bottom-4 bg-bg/80 backdrop-blur-md p-4 rounded-xl text-sm">
+            <strong className="block text-text text-base mb-0.5">
+              СпецДорСервис
+            </strong>
+            <span className="text-muted">
+              Подбор, поставка, монтаж и сервис в одних руках
+            </span>
           </div>
         </div>
       </div>
