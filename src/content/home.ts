@@ -22,6 +22,11 @@ export const home: HomeContent = {
     proof:
       'Инженерная поддержка на русском, китайском, английском и корейском · Поставки по России и за рубеж',
   },
+  video: 'https://res.cloudinary.com/quj72jdl/video/upload/v1793206895/hero-home.mp4',
+image: {
+  src: '/images/hero-home-poster.jpg', 
+  alt: 'Промышленный карьер и дробильно-сортировочный комплекс',
+},
   tagline:
     'Один подрядчик на весь цикл. От подбора оборудования до запуска на объекте.',
   stats: [
