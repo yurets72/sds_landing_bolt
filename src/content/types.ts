@@ -36,6 +36,7 @@ export interface HomeDirectionCard {
   title: string;
   text: string;
   href: string;
+  image?: string;
 }
 
 export interface DirectionContent {
