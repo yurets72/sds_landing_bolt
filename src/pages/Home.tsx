@@ -5,6 +5,8 @@ import { PageShell } from '@/components/layout/PageShell';
 import { Hero } from '@/components/sections/Hero';
 import { Tagline } from '@/components/sections/Tagline';
 import { DirectionCards } from '@/components/sections/DirectionCards';
+import { HowItWorks } from '@/components/sections/HowItWorks';
+import { Proof } from '@/components/sections/Proof';
 
 export function Home() {
   useMeta({ title: home.meta.title, description: home.meta.description });
@@ -14,6 +16,8 @@ export function Home() {
       <Hero hero={home.hero} ctaHref={ctaHref} />
       <Tagline text={home.tagline} />
       <DirectionCards cards={home.directions} />
+      <HowItWorks steps={home.steps} />
+      <Proof proof={home.proof} />
     </PageShell>
   );
 }
