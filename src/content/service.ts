@@ -21,7 +21,7 @@ export const service: DirectionContent = {
     ctaHref: '#contacts',
     proof: 'Сервисные центры: Иркутск · Владивосток · Москва',
     image: {
-      src: 'https://images.pexels.com/photos/5279361/pexels-photo-5279361.jpeg?auto=compress&cs=tinysrgb&h=900&w=1100',
+      src: '/images/service.png',
       alt: 'Металлические детали, броня дробилок и промышленные комплектующие',
     },
   },
