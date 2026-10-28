@@ -20,27 +20,40 @@ export function DirectionCards({ cards }: DirectionCardsProps) {
 
         <ol className="grid gap-6 md:grid-cols-3 list-none p-0">
           {cards.map((c, i) => (
-            <li key={c.number} className="reveal">
+            <li
+              key={c.number}
+              className="reveal"
+              style={{ '--reveal-delay': `${i * 100}ms` } as React.CSSProperties}
+            >
               <a
                 href={`#${c.href}`}
-                className="group flex flex-col gap-5 h-full bg-panel border border-line rounded-2xl p-6 transition-colors duration-500 hover:border-accent"
-                style={{ transitionDelay: `${i * 60}ms` }}
+                className="group relative flex flex-col justify-end h-full min-h-[360px] bg-panel border border-line rounded-2xl overflow-hidden transition-colors duration-500 hover:border-accent"
               >
-                <div className="flex items-baseline justify-between">
-                  <span className="text-accent-soft text-sm font-bold tracking-[0.08em]">
-                    {c.number} · {c.short}
-                  </span>
-                  <ArrowUpRight className="w-4 h-4 text-muted transition-all duration-500 group-hover:text-accent-soft group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                {c.image && (
+                  <>
+                    <img
+                      src={c.image}
+                      alt=""
+                      loading="lazy"
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/60 to-bg/10" aria-hidden="true" />
+                  </>
+                )}
+                <div className="relative p-6 flex flex-col gap-3">
+                  <div className="flex items-baseline justify-between">
+                    <span className="text-accent-soft text-sm font-bold tracking-[0.08em]">
+                      {c.number} · {c.short}
+                    </span>
+                    <ArrowUpRight className="w-4 h-4 text-muted transition-all duration-500 group-hover:text-accent-soft group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </div>
+                  <h3 className="text-xl font-semibold leading-[1.2] tracking-[-0.02em] [text-wrap:balance]">
+                    {c.title}
+                  </h3>
+                  <p className="text-muted text-sm leading-[1.6] [text-wrap:pretty]">
+                    {c.text}
+                  </p>
                 </div>
-                <h3 className="text-xl font-semibold leading-[1.2] tracking-[-0.02em] [text-wrap:balance]">
-                  {c.title}
-                </h3>
-                <p className="text-muted text-base leading-[1.65] [text-wrap:pretty]">
-                  {c.text}
-                </p>
-                <span className="mt-auto pt-4 border-t border-line text-sm font-semibold text-accent-soft">
-                  Перейти к направлению
-                </span>
               </a>
             </li>
           ))}
