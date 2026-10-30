@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 
 // Импортируем твою длинную картинку (положи её в src/assets/images/)
-import stoneStoryImg from '@/assets/images/stone-story.jpg'; 
+import stoneStoryImg from '@/public/stone-story.webp'; 
 
 export function ScrollBackground() {
     const bgRef = useRef<HTMLDivElement>(null);
