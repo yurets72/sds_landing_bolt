@@ -9,6 +9,9 @@ import { dsk } from '@/content/dsk';
 import { abz } from '@/content/abz';
 import { service } from '@/content/service';
 
+// 1. Импорт нового компонента
+import { ScrollBackground } from '@/components/ScrollBackground';
+
 function App() {
   const route = useRoute();
   useReveal();
@@ -21,22 +24,24 @@ function App() {
   }, [route]);
 
   let page;
+  
   switch (route) {
     case '/':
-      page = <Home />;
+      // 2. Оборачиваем домашнюю страницу в фон
+      page = (
+        <>
+          <ScrollBackground />
+          <Home />
+        </>
+      );
       break;
+      
     case '/dsk':
+      // Если хочешь историю камня и на странице ДСК, раскомментируй ниже:
+      // page = (<><ScrollBackground /><Direction content={dsk} /></>);
       page = <Direction content={dsk} />;
       break;
-    case '/abz':
-      page = <Direction content={abz} />;
-      break;
-    case '/service':
-      page = <Direction content={service} />;
-      break;
-    case '/privacy':
-      page = <Privacy />;
-      break;
+      
     default:
       page = <NotFound />;
   }
