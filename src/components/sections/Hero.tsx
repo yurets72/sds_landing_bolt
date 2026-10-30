@@ -7,22 +7,34 @@ interface HeroProps {
 }
 
 export function Hero({ hero, ctaHref }: HeroProps) {
+  // Функция для автоматического исправления путей к видео и картинкам на GitHub Pages
+  const resolvePath = (path: string | undefined) => {
+    if (!path) return undefined;
+    if (path.startsWith('http') || path.startsWith('data:')) return path;
+    const baseUrl = import.meta.env.BASE_URL || '/';
+    const cleanPath = path.replace(/^\//, '');
+    return baseUrl.endsWith('/') ? `${baseUrl}${cleanPath}` : `${baseUrl}/${cleanPath}`;
+  };
+
+  const videoSrc = resolvePath(hero.video);
+  const posterSrc = resolvePath(hero.image?.src);
+
   return (
-    // Делаем глубокий премиальный темный фон на весь экран с технологичной сеткой на бэкграунде
+    // Премиальный глубокий темный фон в стиле Industrial Tech
     <section className="relative min-h-[90vh] flex items-center py-20 lg:py-28 bg-zinc-950 text-white overflow-hidden selection:bg-orange-600 selection:text-white">
-      {/* Технологичный фоновый паттерн (Grid) и радиальный градиент */}
+      {/* Индустриальный фоновый паттерн (инженерная сетка) и мягкое свечение */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#1f2937_1px,transparent_1px),linear-gradient(to_bottom,#1f2937_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-20 pointer-events-none" />
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-orange-600/10 rounded-full blur-[120px] pointer-events-none" />
       
       <div className="relative mx-auto w-full max-w-wrap px-5 grid gap-12 lg:gap-16 lg:grid-cols-2 items-center z-10">
-        {/* Левая колонка — массивный брутальный текст */}
+        {/* Левая колонка — массивный промышленный текст */}
         <div className="reveal flex flex-col justify-center">
           <p className="inline-flex items-center gap-2 text-orange-500 text-xs font-black uppercase tracking-[0.2em] mb-6 bg-orange-500/10 px-3 py-1.5 rounded-full w-fit border border-orange-500/20">
             <span className="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse" />
             {hero.eyebrow}
           </p>
           
-          {/* Делаем заголовок огромным и ультражирным */}
+          {/* Огромный жирный заголовок с акцентным градиентом на финальной строке */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-black leading-[1.05] tracking-tight max-w-hero mb-6 [text-wrap:balance]">
             {hero.h1Lines.map((line, i) => (
               <span key={i} className={`block ${i === 2 ? 'text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600' : 'text-zinc-100'}`}>
@@ -35,7 +47,7 @@ export function Hero({ hero, ctaHref }: HeroProps) {
             {hero.lead}
           </p>
           
-          {/* Интерактивная кнопка с мягким неоновым свечением при наведении */}
+          {/* Кнопка с мягкой неоновой подсветкой сзади */}
           <div className="flex gap-4 flex-wrap">
             <div className="relative group">
               <div className="absolute -inset-0.5 bg-gradient-to-r from-orange-600 to-amber-500 rounded-xl blur opacity-60 group-hover:opacity-100 transition duration-300 group-hover:duration-200" />
@@ -49,40 +61,39 @@ export function Hero({ hero, ctaHref }: HeroProps) {
             </div>
           </div>
           
-          {/* Строгая индустриальная линия-разделитель */}
+          {/* Строгая разделительная линия */}
           <p className="mt-10 pt-5 border-t border-zinc-800 text-xs sm:text-sm text-zinc-500 max-w-hero font-medium tracking-wide">
             {hero.proof}
           </p>
         </div>
 
-        {/* Правая колонка — мощное видео в стиле Glassmorphism */}
+        {/* Правая колонка — медиа-блок с эффектом Glassmorphism */}
         <div className="relative reveal rounded-2xl overflow-hidden aspect-[1.1/1] bg-zinc-900 border border-zinc-800/80 shadow-2xl shadow-black/80 group">
-          {/* Мягкий свет по контуру видео */}
           <div className="absolute inset-0 border border-white/5 rounded-2xl z-20 pointer-events-none group-hover:border-orange-500/20 transition-colors duration-500" />
           
-          {hero.video ? (
+          {videoSrc ? (
             <video
               className="absolute inset-0 w-full h-full object-cover scale-[1.01] group-hover:scale-105 transition-transform duration-700 ease-out"
-              src={hero.video}
-              poster={hero.image?.src}
+              src={videoSrc}
+              poster={posterSrc}
               autoPlay
               muted
               loop
               playsInline
               preload="auto"
             />
-          ) : hero.image ? (
+          ) : posterSrc ? (
             <img
-              src={hero.image.src}
-              alt={hero.image.alt}
+              src={posterSrc}
+              alt={hero.image?.alt}
               className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
             />
           ) : null}
 
-          {/* Затемнение снизу для идеального вписывания в глубокие темные тона */}
+          {/* Затемнение для бесшовного слияния с темным фоном */}
           <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent pointer-events-none z-10" aria-hidden="true" />
 
-          {/* Подпись поверх видео — эффект матового стекла (Glassmorphism) */}
+          {/* Плашка «Матовое стекло» поверх видео */}
           <div className="absolute inset-x-4 bottom-4 bg-zinc-900/60 backdrop-blur-xl border border-white/10 p-5 rounded-xl text-sm z-20 shadow-xl">
             <strong className="block text-zinc-100 text-base font-bold mb-1 tracking-tight flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-orange-500" />
