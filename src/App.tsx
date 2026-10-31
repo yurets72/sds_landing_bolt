@@ -9,7 +9,7 @@ import { dsk } from '@/content/dsk';
 import { abz } from '@/content/abz';
 import { service } from '@/content/service';
 
-// 1. Импорт нового компонента
+// Импортируем компонент фона
 import { ScrollBackground } from '@/components/ScrollBackground';
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
   
   switch (route) {
     case '/':
-      // 2. Оборачиваем домашнюю страницу в фон
+      // Главная страница с фоном
       page = (
         <>
           <ScrollBackground />
@@ -37,9 +37,38 @@ function App() {
       break;
       
     case '/dsk':
-      // Если хочешь историю камня и на странице ДСК, раскомментируй ниже:
-      // page = (<><ScrollBackground /><Direction content={dsk} /></>);
-      page = <Direction content={dsk} />;
+      // Страница ДСК с тем же фоном (или можешь сделать отдельный фон для каждой!)
+      page = (
+        <>
+          <ScrollBackground />
+          <Direction content={dsk} />
+        </>
+      );
+      break;
+      
+    case '/abz':
+      // Страница АБЗ с фоном
+      page = (
+        <>
+          <ScrollBackground />
+          <Direction content={abz} />
+        </>
+      );
+      break;
+      
+    case '/service':
+      // Страница Сервиса с фоном
+      page = (
+        <>
+          <ScrollBackground />
+          <Direction content={service} />
+        </>
+      );
+      break;
+      
+    case '/privacy':
+      // Политика конфиденциальности обычно без красивого фона
+      page = <Privacy />;
       break;
       
     default:
